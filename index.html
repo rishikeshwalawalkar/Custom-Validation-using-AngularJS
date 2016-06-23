@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app = "myapp">
+
+  <head>
+    <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script data-require="angular.js@1.5.6" data-semver="1.5.6" src="https://code.angularjs.org/1.5.6/angular.min.js"></script>
+    <script data-require="jquery@*" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+    <script data-require="bootstrap@3.1.1" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <h1>Custom Validation</h1>
+    <form name="userForm" ng-submit="submitForm()" novalidate="">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon2">Password</span>
+        <input class="form-control" placeholder="Password" aria-describedby="sizing-addon2" type="Password" name="password" ng-required="true" ng-model="user.password" />
+      </div>
+      <p ng-show="userForm.password.$invalid">Your password is required.</p>
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon2"> Confirm Password</span>
+        <input class="form-control" placeholder="Re-enter Password" aria-describedby="sizing-addon2" type="Password" name="confirmPassword" ng-compare="password" ngrequired="
+    true" ng-model="user.confirmPassword" />
+      </div>
+      <p ng-show="userForm.confirmPassword.$error.compare &&
+    !userForm.confirmPassword.$error.required">Confirm password doesn’t match.</p>
+    </form>
+  </body>
+
+</html>
